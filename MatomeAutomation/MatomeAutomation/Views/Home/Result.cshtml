@@ -1,0 +1,44 @@
+﻿@model MatomeAutomation.Models.MyProcessThread
+@{
+    ViewBag.Title = "Matome Automation";
+}
+
+<div class="jumbotron">
+    <h1>Matome Automation</h1>
+    <p class="lead">Matome Automationとは2chまとめの投稿を支援する自動投稿ツールです</p>
+    <p><a href="http://2ch.net" class="btn btn-primary btn-lg">2chってなによ？ &raquo;</a></p>
+</div>
+
+<div class="row">
+    <div class="col-md-12">
+        <h2>@ViewBag.Title.</h2>
+
+        @using (Html.BeginForm("Result", "Home", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+        {
+            @Html.AntiForgeryToken()
+            <h4>アドレスを入力して下さい。</h4>
+            <hr />
+            @Html.ValidationSummary("", new { @class = "text-danger" })
+            <div class="form-group">
+                @Html.LabelFor(m => m.Html, new { @class = "col-md-2 control-label" })
+                <div class="col-md-10">
+                    @Html.TextBoxFor(m => m.Html, new { @class = "form-control" })
+                </div>
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(m => m.ExtractRes, new { @class = "col-md-2 control-label" })
+                <div class="col-md-10">
+                    @Html.PasswordFor(m => m.ExtractRes, new { @class = "form-control" })
+                </div>
+            </div>
+            <div class="form-group">
+                <text>@ViewBag.html</text>
+            </div>
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <input type="submit" class="btn btn-default" value="HTML生成" />
+                </div>
+            </div>
+        }
+    </div>
+</div>
